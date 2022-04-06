@@ -33,7 +33,6 @@
             this.browseInput = new System.Windows.Forms.Button();
             this.filepathInput = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,16 +77,15 @@
             // 
             // filepathInput
             // 
-            this.filepathInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.filepathInput.Location = new System.Drawing.Point(74, 76);
+            this.filepathInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.filepathInput.Location = new System.Drawing.Point(3, 76);
             this.filepathInput.Name = "filepathInput";
-            this.filepathInput.Size = new System.Drawing.Size(100, 23);
+            this.filepathInput.Size = new System.Drawing.Size(242, 23);
             this.filepathInput.TabIndex = 2;
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.InitialDirectory = "sasd";
+            this.openFileDialog1.CheckFileExists = false;
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // usersettings_form
@@ -112,6 +110,5 @@
         private Button browseInput;
         private TextBox filepathInput;
         private OpenFileDialog openFileDialog1;
-        private SaveFileDialog saveFileDialog1;
     }
 }
