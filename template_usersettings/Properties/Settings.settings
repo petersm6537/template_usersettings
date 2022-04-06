@@ -6,7 +6,7 @@
       <Value Profile="(Default)">C:\Users\Public\Documents</Value>
     </Setting>
     <Setting Name="userfilepath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\Public\Documents</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Setting3" Type="System.String" Scope="User">
       <Value Profile="(Default)">setting3 value tesing... user scope</Value>
