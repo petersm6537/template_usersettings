@@ -37,7 +37,7 @@ namespace template_usersettings.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Public\\Documents")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string userfilepath {
             get {
                 return ((string)(this["userfilepath"]));

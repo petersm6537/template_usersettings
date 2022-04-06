@@ -1,44 +1,86 @@
 namespace template_usersettings
 {
-    public static class GlobalVariables
+    /*public static class GlobalVariables
     {
         public static string defaultfilepath;
         public static string userfilepath;
 
-    }
+    }*/
     public partial class usersettings_form : Form
     {
         public usersettings_form()
         {
+            #region Comments
+            /*1.Initializes main form
+             * 2. Adds user selected filepath to textbox
+             */
+            #endregion Comments
+
             InitializeComponent();
 
-            GlobalVariables.defaultfilepath = Properties.Settings.Default.defaultfilepath;
-            GlobalVariables.userfilepath = Properties.Settings.Default.userfilepath;
-            if (string.IsNullOrEmpty(GlobalVariables.userfilepath))
-            {
-                GlobalVariables.userfilepath = GlobalVariables.defaultfilepath;
-            }
-
-            filepathInput.Text = GlobalVariables.defaultfilepath;
+            filepathInput.Text = Program.GlobalVariables.userfilepath;
 
         }
+
+
+
+
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            #region Comments
+            /* Open file dialog event hit Open Button
+             * 1. Gets the selected file name
+             * 2. Changes it to a directory name, and puts it into a string
+             * 3. Changes the text in textbox to the correct file string
+             */
+            #endregion Comments
+
+            System.IO.FileInfo finfo = new System.IO.FileInfo(openFileDialog1.FileName);
+            string filepath = finfo.DirectoryName;
+            filepathInput.Text = filepath;
+
         }
 
-        private void browseInput_Click(object sender, EventArgs e)
+
+
+
+
+        public void browseInput_Click(object sender, EventArgs e)
         {
-            openFileDialog1.InitialDirectory = GlobalVariables.userfilepath;
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
+            openFileDialog1.ShowDialog();
+        }
+
+
+
+
+
+        private void applyInput_Click(object sender, EventArgs e)
+        {
+            #region Comments
+            /* Apply button event hit button
+             * 1. Put the text in the textbox into a string
+             * 2. changes the settings to the text in the string
+             * 3. Saves the changes to settings
+             */
+            #endregion Comments
+
+            string filepath = filepathInput.Text;
+
+            if(MessageBox.Show("Are you sure?","Apply",MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                System.IO.Directory.GetFiles(openFileDialog1.FileName);
+                Properties.Settings.Default.userfilepath = filepath;
+                Properties.Settings.Default.Save();
             }
+
         }
 
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        private void defaultInput_Click(object sender, EventArgs e)
         {
-
+            if(MessageBox.Show("Are you sure you'd like to reset your filepath?", "Reset", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Properties.Settings.Default.userfilepath = Properties.Settings.Default.defaultfilepath;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }
